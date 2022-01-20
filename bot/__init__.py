@@ -153,7 +153,7 @@ try:
     AUTO_DELETE_MESSAGE_DURATION = int(getConfig('AUTO_DELETE_MESSAGE_DURATION'))
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
-    LOG_CHANNEL = int(getConfig('LOG_CHANNEL'))
+    
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
@@ -388,6 +388,20 @@ try:
     IS_VPS = IS_VPS.lower() == 'true'
 except KeyError:
     IS_VPS = False
+try:
+    LOG_CHANNEL_1 = int(getConfig('LOG_CHANNEL_1'))
+    if int(LOG_CHANNEL_1) == 0:
+        raise KeyError
+except KeyError:
+    logging.warning('LOG_CHANNEL_1 not provided!')
+    LOG_CHANNEL_1 = None
+try:
+    LOG_CHANNEL_2 = int(getConfig('LOG_CHANNEL_2'))
+    if int(LOG_CHANNEL_2) == 0:
+        raise KeyError
+except KeyError:
+    logging.warning('LOG_CHANNEL_2 not provided!')
+    LOG_CHANNEL_2 = None
 try:
     AS_DOCUMENT = getConfig('AS_DOCUMENT')
     AS_DOCUMENT = AS_DOCUMENT.lower() == 'true'
