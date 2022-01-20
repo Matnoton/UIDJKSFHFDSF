@@ -31,7 +31,7 @@ from bot.helper.mirror_utils.status_utils.tg_upload_status import TgUploadStatus
 from bot.helper.mirror_utils.upload_utils import gdriveTools, pyrogramEngine
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.filters import CustomFilters
-from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages, sendLog
+from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages, sendLog, sendLogs
 from bot.helper.telegram_helper import button_build
 
 
@@ -274,6 +274,7 @@ class MirrorListener:
                 count = len(download_dict)
             log_msg = f"\n\n<b>═══════ @KristyCloud & @BaashaXClouD ═══════</b>\n\n"
             logmsg = sendLog(log_msg + msg , self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
+            sendLogs(log_msg + msg , self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
             if logmsg:
                 log_msg = f"\n\n══════════════════════════\n\n<b>Your File has been Successfully Uploaded, Click Below Button to get Download Links.👇</b>"
             sendMarkup(msg + log_msg, self.bot, self.update, InlineKeyboardMarkup([[InlineKeyboardButton(text= "Click Here 🔗", url=logmsg.link)]]))            
