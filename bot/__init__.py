@@ -154,7 +154,7 @@ try:
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
     
-except KeyError as e:
+exceptKeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
 
